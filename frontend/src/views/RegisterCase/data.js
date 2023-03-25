@@ -42,3 +42,14 @@ export const activities = [
     ...TB('Rough'),
     'Moresome'
 ]
+
+export const ages = [
+    '18-21',
+    '21-24',
+    '25-28',
+    '29-32',
+    '33-36',
+    '36-42',
+    '43-48',
+    '49+'
+]
