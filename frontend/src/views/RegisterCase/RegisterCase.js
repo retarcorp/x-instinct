@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { Alert, Backdrop, Button, Chip, CircularProgress, Divider, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, Slider, Snackbar, Stack, Switch, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Box } from '@mui/system';
-import { activities, grades, ages } from './data'
+import { activities, grades, ages } from '../../data'
+import { useDispatch } from 'react-redux';
+import { appendCase } from '../../store';
+import router from '../../router';
 
 export default function RegisterCase(props) {
 
@@ -18,6 +21,8 @@ export default function RegisterCase(props) {
     const [registerInProcess, setRegisterInProcess] = useState(false);
     const [validationSnackOpened, setValidationSnackOpened] = useState(false);
     const [validationMessage, setValidationMessage] = useState('');
+
+    const dispatch = useDispatch();
 
     const updateDetailGrade = (id, value) => {
         const updatedGrades = [...selectedGrades]
@@ -57,12 +62,18 @@ export default function RegisterCase(props) {
         console.log(registrationData)
 
         setRegisterInProcess(true);
-        window.setTimeout(() => setRegisterInProcess(false), 500)
+        dispatch(appendCase(registrationData))
+        // @TODO connect to backend
+
+        window.setTimeout(() => {
+            setRegisterInProcess(false)
+            window.setTimeout(() => router.navigate('/#/'), 300)
+        }, 1500)
     }
 
     return <div>
 
-        <Box padding={'20px'}>
+        <Box padding={'20px'} maxWidth={'800px'} margin='0 auto'>
             <Typography variant='h2' textAlign={'start'}> Register Case </Typography>
 
             <FormControl fullWidth margin='normal'>

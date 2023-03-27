@@ -1,4 +1,4 @@
-import { AfterTasteSlider, AppearanceSlider, BodyAttractionSlider, HygieneSlider, PassionSlider, PersonalitySlider, SkillSlider } from './GradeSliders';
+import { AfterTasteSlider, AppearanceSlider, BodyAttractionSlider, HygieneSlider, PassionSlider, PersonalitySlider, SkillSlider } from './views/RegisterCase/GradeSliders';
 
 const Grade = function (id, symbol, name, component) {
     this.id = id;
