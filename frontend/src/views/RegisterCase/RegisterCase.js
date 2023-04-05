@@ -64,6 +64,7 @@ export default function RegisterCase(props) {
         setRegisterInProcess(true);
         dispatch(appendCase(registrationData))
         // @TODO connect to backend
+        // Hello
 
         window.setTimeout(() => {
             setRegisterInProcess(false)
@@ -74,7 +75,7 @@ export default function RegisterCase(props) {
     return <div>
 
         <Box padding={'20px'} maxWidth={'800px'} margin='0 auto'>
-            <Typography variant='h2' textAlign={'start'}> Register Case </Typography>
+            <Typography variant='h2' textAlign={'start'}> Register Case! </Typography>
 
             <FormControl fullWidth margin='normal'>
                 <TextField

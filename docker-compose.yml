@@ -1,0 +1,36 @@
+version: '3'
+services:
+  frontend:
+    image: node:18-alpine
+    command: npm start
+    ports:
+      - 3000:3000
+    working_dir: /frontend    
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /frontend
+    
+
+  backend:
+    image: node:18-alpine
+    command: npm run start:dev
+    ports: 
+      - 8000:8000
+    working_dir: /backend
+    volumes:
+      - ./backend:/backend
+      # - type: bind
+      #   source: ./backend
+      #   target: /backend
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - db-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: instinct
+
+volumes:
+  db-volume: 
